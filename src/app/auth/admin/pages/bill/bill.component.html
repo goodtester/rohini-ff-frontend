@@ -1,0 +1,64 @@
+<br>
+<div class="columns">
+  <h1 class="column pl-6 is-size-4 has-text-weight-semibold color-darkblue">
+   Orders
+  </h1>
+  <span class="column is-2"></span>
+</div>
+
+<div class="columns">
+  <div class="column is-3 pl-6 pt-6">
+    <p class="control has-icons-right my-3">
+      <input
+        class="input is-rounded border-orange"
+        [(ngModel)]="username"
+        (ngModelChange)="searchByParams('username', $event)"
+        type="text"
+        placeholder="Enter Client's username"
+        required="true"
+      />
+    </p>
+  </div>
+  <div class="column is-3 pl-6 pt-6">
+    <p class="control has-icons-right my-3">
+      <input
+        class="input is-rounded border-orange"
+        [ngModel]="idBill"
+        (ngModelChange)="searchByParams('idBill', $event)"
+        type="text"
+        placeholder="Enter invoice number"
+        required="true"
+      />
+    </p>
+  </div>
+
+  <div class="column is-6 pl-6 pt-6">
+    <input
+      class="calendar m-4 is-size-5 borders"
+      type="date"
+      [ngModel]="startDate | date: 'yyyy-MM-dd'"
+      (ngModelChange)="searchByParams('startDate', $event)"
+    />
+    <input
+      class="calendar m-4 is-size-5 borders"
+      type="date"
+      [ngModel]="endDate | date: 'yyyy-MM-dd'"
+      (ngModelChange)="searchByParams('endDate', $event)"
+    />
+
+    <div class="select is-rounded m-3">
+      <select [ngModel]="statusBill" (ngModelChange)="searchByParams('statusBill', $event)">
+        <option value="DEFAULT">Select payment status</option>
+        <option value="PAID">Paid</option>
+        <option value="PENDING">Pending</option>
+        <option value="NONPAYMENT">Not Paid</option>
+        <option value="DELETED">Deleted</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div *ngIf="listBills != null" class="columns is-flex-wrap-wrap pl-6">
+  <app-bill-card class="column widthcardbill" *ngFor="let bill of listBills.data.bill" [bill]="bill"> </app-bill-card>
+
+  <app-bill-modal (close)="isModalVisible = false" *ngIf="isModalVisible" [bill]="oneBill"></app-bill-modal>
+</div>

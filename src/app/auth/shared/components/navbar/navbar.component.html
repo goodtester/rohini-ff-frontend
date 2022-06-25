@@ -1,0 +1,60 @@
+<nav class="navbar px-6 background-color" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand is-justify-content-center is-hidden-desktop is-align-content-center">
+    <a class="navbar-item" href="#">
+      <img class="logo-header" src="assets/logo.png" />
+    </a>
+    <h1 class="title primary-text is-size-3 color-darkblue is-align-self-center">McBurger</h1>
+  </div>
+
+  <div class="navbar-brand is-hidden-touch">
+    <a class="navbar-item" href="#">
+      <img class="logo-header" src="assets/logo.png" />
+    </a>
+    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu pl-6">
+    <div class="navbar-start is-size-5">
+      <a href="#header" class="navbar-item"> Home </a>
+      <a href="#menu" class="navbar-item"> Menu</a>
+      <a href="#aboutus" class="navbar-item"> About Us </a>
+    </div>
+    <div class="navbar-end">
+      <div class="is-flex is-align-content-flex-start is-align-items-center">
+        <a routerLink="/order" class="m-3">
+          <i class="fa-solid fa-cart-shopping is-size-3 color-orange"></i>
+          <span class='badge badge-warning' id='lblCartCount'> {{getCartSize()}} </span>
+        </a>
+        <div *ngIf="this.isLogged == false" class="userInfo">
+          <a routerLink="/signup" class="button background-color-orange is-rounded has-text-white mr-2">
+            <strong>Create Account</strong>
+          </a>
+          <a routerLink="/login" class="button is-rounded is-white"> Log In </a>
+        </div>
+
+        <div *ngIf="this.isLogged == true" class="is-flex is-align-items-center px-2 m-3">
+          <div *ngIf="userData.urlImage != null" class="media-left">
+            <figure class="image is-48x48">
+              <img class="is-rounded" [src]="userData.urlImage" />
+            </figure>
+          </div>
+          <div class="media-content">
+            <a routerLink="/admin/home" class="button is-rounded is-white">
+              {{ userData.name }}
+            </a>
+          </div>
+          <a (click)="logout()" class="color-darkblue is-hidden-touch ml-2" routerLink="/">
+            <span class="fa-stack fa-1x">
+              <i class="far fa-square fa-stack-2x"></i>
+              <i class="fas fa-arrow-right-from-bracket fa-stack-1x"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

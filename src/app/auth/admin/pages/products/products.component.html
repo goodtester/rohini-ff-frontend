@@ -1,0 +1,44 @@
+<div class="columns">
+  <h1 class="column pl-6 is-size-4 has-text-weight-semibold color-darkblue">
+   Products
+  </h1>
+  <span class="column is-2"></span>
+</div>
+<div class="columns">
+  <div class="column is-8 pl-6 pt-6">
+    <app-search [holder]="'Enter the product name'"></app-search>
+
+    <div *ngIf="categories != null" class="columns padding-categories">
+      <div
+        class="column is-flex has-text-centered is-align-content-center is-justify-content-center is-align-items-center"
+        *ngFor="let category of categories.data.category"
+      >
+        <a (click)="filterByCategory(category.name)">
+          <figure
+            class="image is-96x96 p-3 borders-categories"
+            [ngClass]="[category.name == nameCategory ? 'background-color-orange' : 'has-background-white']"
+          >
+            <img [src]="category.imageUrl" />
+          </figure>
+          {{category.name}}
+        </a>
+      </div>
+    </div>
+
+    <div *ngIf="products != null" class="columns is-flex-wrap-wrap">
+      <app-products-card
+        class="column widthcard"
+        (detailProduct)="showDetailProduct($event)"
+        *ngFor="let product of products.data.products"
+        [product]="product"
+      >
+      </app-products-card>
+    </div>
+  </div>
+
+  <div class="column pt-6 pr-6">
+    <div class="has-background-white borders">
+      <app-product-side [editProduct]="editProduct"></app-product-side>
+    </div>
+  </div>
+</div>

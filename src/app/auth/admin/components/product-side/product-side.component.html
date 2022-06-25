@@ -1,0 +1,155 @@
+<div class="p-5">
+  <div class="columns is-flex is-justify-content-center">
+    <span class="column is-1"></span>
+    <h1 class="column is-10 is-size-4 has-text-centered has-text-weight-semibold color-darkblue">
+      {{ title }}
+    </h1>
+    <a (click)="clean()"><i class="fa-solid fa-broom color-orange"></i></a>
+  </div>
+  <form [formGroup]="product">
+    <figure *ngIf="editImage != null" class="image is-5by3">
+      <img class="round" [src]="editImage" alt="Placeholder image" />
+    </figure>
+    <div class="file is-normal has-name pt-3">
+      <label class="file-label">
+        <input
+          class="file-input"
+          id="image"
+          (change)="onFileChange($event)"
+          type="file"
+          name="resume"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label"> Images </span>
+        </span>
+        <span class="file-name">
+          {{ imageFile?.name | filename }}
+        </span>
+      </label>
+      <button (click)="removeImage()" class="button is-danger is-light ml-2">Remove Image</button>
+    </div>
+
+    <div class="tooltip">
+      <h1 class="is-size-5 color-darkblue my-2">Product Name</h1>
+      <span *ngIf="validate('name')" class="tag is-warning tooltip tooltiptext">This field is required</span>
+    </div>
+    <input formControlName="name" class="input is-rounded input-fields" type="text" placeholder="Product Name" />
+
+    <div class="tooltip">
+      <h1 class="is-size-5 color-darkblue my-2">Description</h1>
+      <span *ngIf="validate('description')" class="tag is-warning tooltip tooltiptext">
+        This field is required
+      </span>
+    </div>
+    <div class="control">
+      <textarea
+        formControlName="description"
+        class="textarea has-fixed-size borders input-fields"
+        placeholder="Brief product description"
+      ></textarea>
+    </div>
+
+    <div class="tooltip">
+      <h1 class="is-size-5 color-darkblue my-2">Price</h1>
+      <span *ngIf="validate('price')" class="tag is-warning tooltip tooltiptext">This field is required</span>
+    </div>
+    <input
+      formControlName="price"
+      class="input is-rounded input-fields"
+      type="number"
+      placeholder="Price of the product"
+    />
+    <div class="columns">
+      <div class="column is-6">
+        <h1 class="is-size-5 color-darkblue my-2">Calories</h1>
+        <input
+          formControlName="calories"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Enter kilocalories"
+        />
+        <div class="tooltip">
+          <h1 class="is-size-5 color-darkblue my-2">Discount points</h1>
+          <span *ngIf="validate('discountPoint')" class="tag is-warning py-5 tooltip tooltiptext"
+            >Discount points must be less than 10.00</span
+          >
+        </div>
+
+        <input
+          formControlName="discountPoint"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Digita los puntos"
+        />
+        <div class="tooltip">
+          <h1 class="is-size-5 color-darkblue my-2">Category</h1>
+          <span *ngIf="validate('category')" class="tag is-warning tooltip tooltiptext">Select a category</span>
+        </div>
+        <div class="select is-rounded">
+          <select formControlName="category" class="input-fields">
+            <option value="0">Select a category</option>
+            <option [value]="item.idCategory" *ngFor="let item of categories.data.category">{{ item.name }}</option>
+          </select>
+        </div>
+        <button
+          *ngIf="isClean == false"
+          (click)="updateProducts()"
+          [disabled]="product.valid == false"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Edit product
+        </button>
+
+        <button
+          *ngIf="isClean"
+          [disabled]="product.valid == false"
+          (click)="createProduct()"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Create product
+        </button>
+      </div>
+      <div class="column is-6">
+        <div class="tooltip">
+          <h1 class="is-size-5 color-darkblue my-2">Duration</h1>
+          <span *ngIf="validate('duration')" class="tag is-warning tooltip tooltiptext">Enter less than 90 minutes</span>
+        </div>
+        <input
+          formControlName="duration"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Time in minutes"
+        />
+        <div class="tooltip">
+          <h1 class="is-size-5 color-darkblue my-2">Featured</h1>
+          <span *ngIf="validate('highlight')" class="tag is-warning py-5 tooltip tooltiptext">Enter O or 1</span
+          >
+        </div>
+        <input
+          formControlName="highlight"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Featured Product"
+        />
+        <h1 class="is-size-5 color-darkblue my-2">Status</h1>
+        <div class="select is-rounded">
+          <select formControlName="status" class="input-fields">
+            <option value="ACTIVE">Active</option>
+            <option value="INACTIVE">Inactive</option>
+          </select>
+        </div>
+        <button
+          [disabled]="idProduct == null"
+          (click)="deleteProduct()"
+          class="button is-rounded background-color-darkblue has-text-white is-size-5 m-3"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

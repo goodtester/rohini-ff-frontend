@@ -1,0 +1,415 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bulma/css/bulma.css"
+// Import component
+//Variables for the colors
+$white : #FFFFFF
+$darkgray : #707070
+$color-background:#F2F2F2
+$lightgray : #AEAEAE
+$fields: #F2F2F2
+$orange : #F25D50
+$darkblue : #282E40
+$yellow : #FFD677
+$orangeHover : #fb2916
+$breakpoint:799px
+$breakpointSmall:667px
+
+//Font Family
+
+$fontPrincipal:'Roboto'
+
+html
+  background-color:$color-background
+
+body
+  height: 100%
+  overflow-x: hidden
+  overflow-y: hidden
+
+#sidebar
+  height: 100%
+  min-height: 100vh
+
+// ------------- Colors -------------
+
+.background-color
+  background-color:$color-background
+
+a.navbar-item:hover
+  color: $orange
+
+.logo-header
+  max-height: 5.5rem !important
+
+.color-white
+  color: $white
+
+.color-white:hover
+  color:$orange
+
+.color-darkblue
+  color:$darkblue
+
+.color-darkblue-hover
+  color:$darkblue
+
+.color-orange
+  color:$orange
+
+.border-orange:focus
+  border-color: $orange
+
+.background-color-darkblue
+  background-color: $darkblue
+
+.button[disabled], fieldset[disabled] .button
+  background-color: $orange !important
+
+.background-color-orange
+  background-color: $orange
+  .background-color-orange:hover
+    background-color: $orangeHover
+
+
+// ------------- NAV -------------
+
+.navbar-burger
+  height: auto
+
+.navbar
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+
+.space-top
+  padding-top: 8rem
+
+// ------------- TOOLTIP GENERAL -------------
+
+.tooltip
+  position: relative
+  display: inline-block
+
+.tooltiptext
+  position: absolute
+  z-index: 1
+  bottom: 15px
+  left: 105%
+
+
+// ------------- GENERAL BORDERS  -------------
+.borders
+  border-radius:25px
+
+.borders-categories
+  border-radius:50%
+
+.info-primary
+  padding: 10rem
+
+.primary-text
+  font-family: 'Cormorant Garamond'
+  font-weight: 200
+  font-size: 4.3rem
+
+.card-login
+  border-radius: 25px
+
+.imagen-logo-login
+  width: 40%
+  margin-left: auto
+  margin-right: auto
+
+.sidebar
+  border-top-right-radius: 10%
+  border-bottom-right-radius: 10%
+
+.image-burger
+  width: 80%
+
+.header-text
+  padding-left: 130px
+
+.round
+  border-radius: 15px
+
+.padding-categories
+  padding: 0 30% 0 30%
+
+.widthcard
+  flex: none
+  width: 16rem
+
+.widthcarduser
+  flex: none
+  width: 21.5rem
+
+.widthcardbill
+  flex: none
+  width: 22rem
+
+.borders-product-image
+  border-top-left-radius: 25px
+  border-top-right-radius: 25px
+
+.input-fields
+  background: $fields !important
+  border-color: $fields  !important
+
+.itemList
+  padding-top: 2rem
+  padding-left: 3rem
+
+.calendar
+  border-color: $fields !important
+  box-shadow:$fields !important
+
+.calendar, .grafics
+  background-color: $color-background
+
+.table-text
+  color: $darkblue
+  font-weight: 400
+
+.table-item
+  color: $darkblue
+  font-weight: 300
+
+.bill-print
+  margin-top: 9rem
+  background-image: url('./assets/rain_background.jpg')
+  width: 500px
+
+.table-tax
+  text-align: -webkit-center
+
+.table
+  background-color: #2e2e2e00
+
+.modal-content, .modal-card
+  width: 600px
+
+.modal-content-product, .modal-card
+  width: 350px
+
+.highlight
+  position: absolute
+
+.closeModal
+  position: relative
+
+.slider-wrap
+  position: relative
+  overflow: hidden
+  height: 380px
+  width: 100%
+  text-align: center
+
+.slider-main
+  position: relative
+
+.item
+  position: relative
+  display: inline-block
+  width: 300px
+  height: 380px
+  margin: 0 12px
+
+.text
+  position: absolute
+
+.prev
+  position: absolute
+  top:160px
+  left:30px
+  transform: translate(-50%,-50%)
+
+.next
+  position: absolute
+  top:160px
+  right: -20px
+  transform: translate(-50%,-50%)
+
+.chart-bar-monthly-sales
+  height:350px
+
+
+.newsletter
+  border-bottom-left-radius: 5rem
+  border-bottom-right-radius: 15rem
+  border-top-right-radius: 5rem
+  border-top-left-radius: 15rem
+  box-shadow: 0px 10px 20px 20px rgb(62 62 62 / 13%)
+
+.box-shadow
+  box-shadow: 15px 15px 12px 3px rgb(82 82 82 / 28%)
+
+.container-nav
+  display: none
+  position: absolute
+
+.top-content-product
+  padding-left: 0.5rem
+  padding-right: 0.5rem
+
+.product
+  padding-left: 3rem
+  padding-right: 3rem
+
+.form-contact
+  padding: 40px
+
+.div-total
+  flex-grow: 1 !important
+
+.button-additional:after:clicked
+  background-color: #ffe08a !important
+  border-color: transparent !important
+  color:  rgba(0,0,0,.7) !important
+
+.bill
+  justify-content: center
+  margin-top: 3rem
+  width: 600px
+
+.centered
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+
+.div-header
+  padding-top: 2.7rem !important
+
+.payment
+  border-color: white
+  cursor: pointer
+  padding:150px
+
+.payment-item
+    margin: 30px
+@media screen and ( max-width: 1420px )
+  .div-header
+    padding-top: 8rem !important
+
+@media screen and ( max-width: $breakpoint )
+  #sidebar
+    height: 3.5rem !important
+    min-height:3.5rem !important
+  .navbar-menu
+    padding-left: 30px
+    padding-right: 30px
+
+  .blocker
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    content: ' '
+    background: rgba(0, 0, 0, 0.5)
+
+  .stack-top
+    position: absolute
+    z-index: 1
+    left:4.5rem
+
+  .itemList
+    padding-top: 0.5rem
+    padding-left: 1rem
+
+  .navbar-item
+    display: flex
+
+
+  .bill-print
+    width: 420px
+    padding-bottom: 4rem
+
+  .payment
+    cursor: pointer
+    padding:90px
+
+  .payment-item
+    margin: 4px
+
+  .logo-header
+    max-height: 3.5rem !important
+
+  .div-header
+    padding-top: 3.7rem !important
+
+  .header-text
+    padding-top: 30px
+    padding-left: 5px
+    padding-right: 5px
+
+  .product
+    padding-left: 0rem
+    padding-right: 0rem
+
+  .form-contact
+    padding: 0
+  .item
+    width: 260px
+  .prev
+    left:20px
+
+  .next
+    right: -20px
+
+  .widthcard
+    flex: none
+    width: 12rem
+
+  .padding-categories
+    display: flex
+    flex-wrap: wrap
+    padding: 0 30px 0 30px
+    justify-content: center
+
+  .column
+    flex-grow: 0
+
+  .order-image
+    position: relative
+    width: 130px
+
+  .top-content-product
+    padding: 0
+
+  .container-nav
+    display: inline-block
+    position: fixed
+    bottom: 0
+    width: 100%
+    background-color: $darkblue
+    border-top-left-radius: 2rem
+    border-top-right-radius: 2rem
+
+  .navigationbar
+    position: relative
+    list-style-type: none
+    padding: 10px
+    height: 50px
+    justify-content: center
+
+  .navigationbar li
+    padding-left: 0.3rem
+    padding-right: 0.3rem
+
+  .nav-link
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+    align-items: center
+    min-width: 50px
+    overflow: hidden
+    font-size: 1.6rem
+    white-space: nowrap
+    text-decoration: none
+
+  .nav-link a
+    display: none

@@ -1,0 +1,41 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card borders has-background-white p-4">
+    <div class="has-text-centered" [ngClass]="{ 'is-hidden': hideElements }">
+      <h1 class="title is-3">Do you want to create an account?</h1>
+      <h2 class="subtitle py-3">
+        Remember that registered user can earn points for each purchase.
+      </h2>
+      <div class="buttons is-justify-content-center">
+        <button
+          (click)="hideElements = true && (hideCreate = true)"
+          class="button is-rounded background-color-orange has-text-white is-size-5"
+        >
+          Create Account
+        </button>
+        <button routerLink="/checkout" class="button is-rounded background-color-darkblue has-text-white is-size-5">
+          Continue As Guest
+        </button>
+      </div>
+    </div>
+    <div class="createAccount" *ngIf="hideCreate">
+      <app-signup-form [signUpForm]="signUpForm"></app-signup-form>
+      <div *ngIf="hideElements" class="buttons is-justify-content-center has-text-centered">
+        <button
+          (click)="createAccount()"
+          class="button is-rounded background-color-orange has-text-white is-size-6 m-2"
+        >
+          Create Account
+        </button>
+        <a (click)="changeComponent()">Do you already have an account? Click here to login.</a>
+      </div>
+    </div>
+    <div class="login is-justify-content-center has-text-centered" *ngIf="hideLogin">
+      <app-login-form [loginForm]="loginForm"></app-login-form>
+      <button (click)="login()" class="button is-rounded background-color-orange has-text-white is-size-5">
+        Log In
+      </button>
+    </div>
+  </div>
+  <button class="modal-close is-large" (click)="closeModal()" aria-label="close"></button>
+</div>

@@ -1,0 +1,35 @@
+<figure class="imagen-logo-login">
+  <img src="/assets/logo.png" alt="imagen" />
+</figure>
+<h1 class="is-size-3 mt-3 has-text-centered">Log In</h1>
+<br />
+
+<form [formGroup]="loginForm">
+  <p class="control has-icons-left has-icons-right my-3">
+    <input
+      formControlName="username"
+      class="input is-rounded border-orange"
+      type="text"
+      placeholder="Username"
+      required="true"
+    />
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+  </p>
+  <span *ngIf="isValid('username')" class="form-text has-text-danger">The field is required</span>
+
+  <p class="control has-icons-left my-3">
+    <input
+      formControlName="password"
+      class="input is-rounded border-orange"
+      type="password"
+      placeholder="Password"
+      required="true"
+    />
+    <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+  </p>
+  <span *ngIf="isValid('password')" class="form-text has-text-danger">The field is required</span>
+</form>

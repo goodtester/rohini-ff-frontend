@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="hero-body space-top has-text-centered-mobile">
+  <p class="primary-text title is-1-desktop is-3-tablet is-size-1-mobile">Your Order</p>
+  <p class="subtitle is-size-5 mt-1">Delivery is free!</p>
+</div>
+<div class="container">
+  <div class="m-4 has-background-white borders">
+    <h1 *ngIf="orderList.length <= 0" class="subtitle is-size-5 has-text-centered">No items ordered yet.</h1>
+    <div *ngIf="orderList.length <= 0" class="is-flex is-justify-content-center">
+      <button routerLink="/home" class="button is-rounded background-color-orange has-text-white is-size-5 m-3">
+        Back to Menu
+      </button>
+    </div>
+    <div *ngIf="orderList.length > 0" class="columns is-hidden-mobile is-flex is-justify-content-center">
+      <div class="column is-2"></div>
+      <div class="column is-2">
+        <h2 class="subtitle is-size-5 has-text-weight-light">Product</h2>
+      </div>
+      <div class="column is-3 is-flex is-justify-content-center">
+        <h2 class="subtitle is-size-5 has-text-weight-light">Additionals</h2>
+      </div>
+      <div class="column is-1 is-flex is-justify-content-center">
+        <h2 class="subtitle is-size-5 has-text-weight-light">Price</h2>
+      </div>
+      <div class="column is-2 is-flex is-justify-content-center">
+        <h2 class="subtitle is-size-5 has-text-weight-light">Quantity</h2>
+      </div>
+      <div class="column is-2">
+        <h2 class="subtitle is-size-5 has-text-weight-light">Subtotal</h2>
+      </div>
+    </div>
+    <app-order-item
+      class="is-hidden-mobile"
+      *ngFor="let details of orderList"
+      [details]="details"
+      (subTotalOrder)="setTotalOrder()"
+    ></app-order-item>
+    <app-order-item-mobile
+      class="is-hidden-desktop"
+      *ngFor="let details of orderList"
+      [details]="details"
+      (subTotalOrder)="setTotalOrder()"
+    >
+    </app-order-item-mobile>
+    <div *ngIf="orderList.length > 0" class="is-flex is-justify-content-center">
+      <h2 class="subtitle is-size-4 has-text-weight-semibold">
+        Total: <i class="fa-solid fa-dollar-sign mr-1"></i>{{ totalOrder }}
+      </h2>
+    </div>
+    <div *ngIf="orderList.length > 0" class="buttons is-justify-content-center mb-6">
+      <button (click)="payment()" class="button is-rounded background-color-orange has-text-white is-size-5 m-3">
+        <i class="fa-solid fa-cash-register mr-2"></i>Continue to checkout page
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-create-account-modal (close)="isModalVisible = false" *ngIf="isModalVisible"></app-create-account-modal>
+
+<app-navigation-bar></app-navigation-bar>

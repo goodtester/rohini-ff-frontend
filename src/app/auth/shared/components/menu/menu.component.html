@@ -1,0 +1,26 @@
+<section class="section" id="menu">
+  <div class="hero-body has-text-centered-mobile">
+    <p class="primary-text title is-1-desktop is-3-tablet is-size-1-mobile">Our Menu</p>
+  </div>
+</section>
+
+<div class="container is-widescreen">
+  <div *ngIf="categories != null" class="columns padding-categories">
+    <div *ngFor="let category of categories.data.category" class="column is-flex has-text-centered is-align-content-center is-justify-content-center is-align-items-center">
+      <a (click)="filterByCategory(category.name)">
+        <figure
+          class="image is-96x96 p-3 borders-categories"
+          [ngClass]="[category.name == nameCategory ? 'background-color-orange' : 'has-background-white']"
+        >
+          <img [src]="category.imageUrl" />
+        </figure>
+        {{category.name}}
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="products != null" class="columns is-flex is-flex-wrap-wrap is-justify-content-center">
+    <app-product-card-buy class="column widthcard" *ngFor="let product of products.data.products" [product]="product">
+    </app-product-card-buy>
+  </div>
+</div>

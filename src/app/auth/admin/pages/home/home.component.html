@@ -1,0 +1,21 @@
+<br>
+<div class="columns">
+  <h1 class="column pl-6 is-size-4 has-text-weight-semibold color-darkblue">
+   Home - Order Status
+  </h1>
+  <span class="column is-2"></span>
+</div>
+<div class="columns">
+  <div class="column is-8 pl-6 pt-6">
+    <app-search [holder]="'Enter Order Number'" (onDebounce)="search($event)"></app-search>
+
+    <div class="px-5 has-background-white borders">
+      <app-order-info [homeProductsDetails]="homeProductsDetails"></app-order-info>
+    </div>
+  </div>
+  <div class="column pt-6">
+    <app-order-side (homeProductsDetails)="getProductsDetails($event)"></app-order-side>
+  </div>
+</div>
+
+<app-order-modal (close)="isModalVisible = false" *ngIf="isModalVisible" [bill]="bill"></app-order-modal>

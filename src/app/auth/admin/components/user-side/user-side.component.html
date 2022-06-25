@@ -1,0 +1,84 @@
+<div class="p-5">
+  <div class="columns is-flex is-justify-content-center">
+    <span class="column is-1"></span>
+    <h1 class="column is-10 is-size-4 has-text-centered has-text-weight-semibold color-darkblue">New User</h1>
+    <a (click)="clean()"><i class="fa-solid fa-broom color-orange"></i></a>
+  </div>
+  <form [formGroup]="user">
+    <figure class="image is-5by3">
+      <img class="round" src="https://randomuser.me/api/portraits/lego/1.jpg" alt="Placeholder image" />
+    </figure>
+
+    <h1 class="is-size-5 color-darkblue my-2">Full Name</h1>
+    <input formControlName="name" class="input is-rounded input-fields" type="text" placeholder="Enter Name" />
+
+    <h1 class="is-size-5 color-darkblue my-2">Email</h1>
+    <input formControlName="email" class="input is-rounded input-fields" type="text" placeholder="Enter Email" />
+
+    <div *ngIf="isClean">
+      <h1 class="is-size-5 color-darkblue my-2">Password</h1>
+      <input
+        formControlName="password"
+        class="input is-rounded input-fields"
+        type="password"
+        placeholder="123456"
+      />
+    </div>
+
+    <div class="columns">
+      <div class="column is-6">
+        <h1 class="is-size-5 color-darkblue my-2">Username</h1>
+        <input
+          formControlName="username"
+          class="input is-rounded input-fields"
+          type="text"
+          placeholder="Enter Username"
+        />
+        <h1 class="is-size-5 color-darkblue my-2">Discount points</h1>
+        <input
+          formControlName="discountPoint"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Enter discount points"
+        />
+
+        <button
+          *ngIf="isClean == false"
+          (click)="editUsers()"
+          [disabled]="user.valid == false"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Edit User
+        </button>
+
+        <button
+          *ngIf="isClean"
+          [disabled]="user.valid == false"
+          (click)="createUser()"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Create User
+        </button>
+      </div>
+      <div class="column is-6">
+        <h1 class="is-size-5 color-darkblue my-2">Phone</h1>
+        <input
+          formControlName="phone"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Enter phone number"
+        />
+        <h1 class="is-size-5 color-darkblue my-2">Status</h1>
+        <div class="select is-rounded">
+          <select formControlName="status" class="input-fields">
+            <option value="ACTIVE">Active</option>
+            <option value="INACTIVE">Inactive</option>
+          </select>
+        </div>
+        <button *ngIf="isClean == false" (click)="deleteUser()" class="button is-rounded background-color-orange has-text-white is-size-5 m-3">
+          Delete
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

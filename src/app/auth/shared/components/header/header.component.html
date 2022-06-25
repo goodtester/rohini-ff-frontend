@@ -1,0 +1,54 @@
+<div class="columns div-header is-gapless" id="header">
+  <div class="column is-three-fifths is-align-self-center">
+    <div class="header-text has-text-centered-mobile">
+      <p class="primary-text title is-1-desktop is-3-tablet is-size-2-mobile">
+        Peach Milkshake
+        season is here
+      </p>
+      <p class="subtitle is-size-5 mt-1">Treat yourself to this cool, creamy classic</p>
+      <div class="is-flex">
+        <button class="button is-rounded background-color-orange has-text-white is-size-5 mr-5" (click)="navigateToSection('menu')">View Menu</button>
+        <button class="button is-white is-rounded is-size-5 is-size-5-mobiles" (click)="navigateToSection('most-popular')">View Offers</button>
+      </div>
+    </div>
+  </div>
+  <div class="column is-hidden-touch">
+    <div class="section mt-3 mr-6">
+      <figure class="image image-burger">
+        <img src="assets/milkshake.png" />
+      </figure>
+    </div>
+  </div>
+</div>
+
+<section class="section"  id="most-popular">
+  <div class="hero-body has-text-centered-mobile">
+    <p class="primary-text title is-1-desktop is-3-tablet is-size-1-mobile">Featured Favorites</p>
+  </div>
+</section>
+<div *ngIf="listProducts != null" class="columns">
+  <div class="column has-text-right is-hidden-desktop-only is-hidden-mobile">
+    <section class="section is-medium"></section>
+  </div>
+  <div class="column is-four-fifths has-text-centered">
+    <div class="product">
+      <div class="container-fluid">
+        <div class="slider-wrap">
+          <div class="slider-main">
+            <app-product-card-buy class="item" *ngFor="let product of listProducts.data.products" [product]="product">
+            </app-product-card-buy>
+          </div>
+          <button class="button prev is-white are-large is-rounded py-5 px-4" appButtonPrev>
+            <i class="fa-solid fa-chevron-left is-size-3"></i>
+          </button>
+          <button class="button next is-white are-large is-rounded py-5 px-4" appButtonNext>
+            <i class="fa-solid fa-chevron-right is-size-3"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-hidden-desktop-only is-hidden-mobile">
+    <section class="section is-medium"></section>
+  </div>
+</div>

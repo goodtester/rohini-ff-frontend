@@ -1,0 +1,114 @@
+<div class="p-5">
+  <div class="columns is-flex is-justify-content-center">
+    <span class="column is-1"></span>
+    <h1 class="column is-10 is-size-4 has-text-centered has-text-weight-semibold color-darkblue">
+      {{ title }}
+    </h1>
+    <a (click)="clean()"><i class="fa-solid fa-broom color-orange"></i></a>
+  </div>
+  <form [formGroup]="additional">
+    <figure *ngIf="editImage != null" class="image is-5by3">
+      <img class="round" [src]="editImage" alt="Placeholder image" />
+    </figure>
+    <div class="file is-normal has-name pt-3">
+      <label class="file-label">
+        <input
+          class="file-input"
+          id="image"
+          (change)="onFileChange($event)"
+          type="file"
+          name="resume"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label"> Image </span>
+        </span>
+        <span class="file-name">
+          {{ imageFile?.name | filename }}
+        </span>
+      </label>
+      <button (click)="removeImage()" class="button is-danger is-light ml-2">Remove Image</button>
+    </div>
+
+    <div class="tooltip">
+      <h1 class="is-size-5 color-darkblue my-2">Additional Name</h1>
+      <span *ngIf="validate('name')" class="tag is-warning tooltip tooltiptext">This field is required</span>
+    </div>
+    <input
+      formControlName="name"
+      class="input is-rounded input-fields"
+      type="text"
+      placeholder="Additional Name"
+    />
+
+    <div class="tooltip">
+      <h1 class="is-size-5 color-darkblue my-2">Categories</h1>
+      <span *ngIf="validate('category')" class="tag is-warning tooltip tooltiptext"
+        >Select atleast one category</span
+      >
+    </div>
+    <div *ngIf="editCategories != null">
+      <label *ngFor="let category of editCategories" class="is-size-5 color-darkblue checkbox">
+        <input
+          formControlName="category"
+          [checked]="category.check"
+          (change)="onChecked(category.idCategory, $event)"
+          class="is-size-4 m-3 checkbox"
+          type="checkbox"
+          [value]="category.idCategory"
+        />
+        {{ category.name }}
+      </label>
+    </div>
+
+    <div class="columns">
+      <div class="column is-6">
+        <div class="tooltip">
+          <h1 class="is-size-5 color-darkblue my-2">Price</h1>
+          <span *ngIf="validate('price')" class="tag is-warning tooltip tooltiptext">This field is required</span>
+        </div>
+        <input
+          formControlName="price"
+          class="input is-rounded input-fields"
+          type="number"
+          placeholder="Price of the product"
+        />
+        <button
+          *ngIf="isClean == false"
+          (click)="updateAdditionals()"
+          [disabled]="additional.valid == false"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Edit Additional
+        </button>
+        <button
+          *ngIf="isClean"
+          [disabled]="additional.valid == false"
+          (click)="createAdditional()"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Create Additional
+        </button>
+      </div>
+      <div class="column is-6">
+        <h1 class="is-size-5 color-darkblue my-2">Status</h1>
+        <div class="select is-rounded">
+          <select formControlName="status" class="input-fields">
+            <option value="ACTIVE">Active</option>
+            <option value="INACTIVE">Inactive</option>
+          </select>
+        </div>
+        <button
+          [disabled]="idAdditional == null"
+          (click)="deleteAdditional()"
+          class="button is-rounded background-color-darkblue has-text-white is-size-5 m-3"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

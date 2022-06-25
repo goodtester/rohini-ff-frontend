@@ -1,0 +1,24 @@
+<div class="column is-flex is-justify-content-center is-align-items-center is-align-content-center is-flex-grow-4">
+  <section class="section is-medium">
+    <div class="card card-login p-4">
+      <app-signup-form [signUpForm]="signUpForm"></app-signup-form>
+
+      <div class="buttons is-justify-content-center">
+        <button routerLink="/login" class="button is-rounded is-light has-text-black is-size-5 m-3">Login</button>
+
+        <button
+          (click)="createAccount()"
+          [disabled]="!signUpForm.valid"
+          routerLink="/signup"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Create Account
+        </button>
+      </div>
+
+      <div class="has-text-centered">
+        <span *ngIf="!signUpForm.valid" class="form-text has-text-danger">Bad user input.</span>
+      </div>
+    </div>
+  </section>
+</div>

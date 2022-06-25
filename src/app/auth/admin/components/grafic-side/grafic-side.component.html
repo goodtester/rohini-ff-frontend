@@ -1,0 +1,39 @@
+<h1 class="is-size-4 has-text-centered has-text-weight-semibold">
+  Search Settings <a (click)="clean()"><i class="fa-solid fa-broom color-orange ml-6"></i></a>
+</h1>
+<br />
+<div class="px-4">
+  <h2 class="subtitle is-5">Product Search Settings:</h2>
+  <div class="columns">
+    <div class="column is-6">
+      <input
+        [ngModel]="idProduct"
+        (ngModelChange)="getProduct('idProduct', $event)"
+        class="input is-rounded input-fields"
+        type="number"
+        placeholder="Product ID"
+      />
+      <input
+        [ngModel]="startDateProduct"
+        (ngModelChange)="getProduct('startDateProduct', $event)"
+        type="date"
+        class="calendar grafics m-4 is-size-5 borders ng-untouched ng-pristine ng-valid"
+      />
+    </div>
+    <div class="column is-6">
+      <input
+        [ngModel]="limit"
+        (ngModelChange)="getProduct('limit', $event)"
+        class="input is-rounded input-fields"
+        type="number"
+        placeholder="Limit product search"
+      />
+      <input
+        [ngModel]="endDateProduct"
+        (ngModelChange)="getProduct('endDateProduct', $event)"
+        type="date"
+        class="calendar grafics m-4 is-size-5 borders ng-untouched ng-pristine ng-valid"
+      />
+    </div>
+  </div>
+</div>

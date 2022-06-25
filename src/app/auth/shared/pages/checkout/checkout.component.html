@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="hero-body space-top has-text-centered-mobile">
+  <p class="primary-text title is-1-desktop is-3-tablet is-size-1-mobile">Payment methods</p>
+</div>
+
+<h1 *ngIf="isOrder" class="subtitle is-size-5 has-text-centered">No items have been added yet.</h1>
+<div *ngIf="isOrder == true" class="is-flex is-justify-content-center">
+  <button routerLink="/home" class="button is-rounded background-color-orange has-text-white is-size-5 m-3">
+    Back to menu
+  </button>
+</div>
+<div *ngIf="isOrder == false" class="is-flex is-flex-wrap-wrap is-justify-content-center p-2">
+  <div class="payment-item">
+    <button
+      (click)="payment(2)"
+      class="payment borders box-shadow"
+      style="background-image: url('assets/cash.jpg'); background-size: cover"
+    ></button>
+  </div>
+
+  <div class="payment-item pb-5">
+    <button
+      (click)="payment(1)"
+      class="payment borders box-shadow"
+      style="background-image: url('assets/card.jpg'); background-size: cover"
+    ></button>
+  </div>
+</div>
+<app-navigation-bar></app-navigation-bar>

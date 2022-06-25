@@ -1,0 +1,82 @@
+<div class="p-5">
+  <div class="columns is-flex is-justify-content-center">
+    <span class="column is-1"></span>
+    <h1 class="column is-10 is-size-4 has-text-centered has-text-weight-semibold color-darkblue">
+      {{ title }}
+    </h1>
+    <a (click)="clean()"><i class="fa-solid fa-broom color-orange"></i></a>
+  </div>
+  <form [formGroup]="category">
+    <figure *ngIf="editImage != null" class="image is-5by3">
+      <img class="round" [src]="editImage" alt="Placeholder image" />
+    </figure>
+    <div class="file is-normal has-name pt-3">
+      <label class="file-label">
+        <input
+          class="file-input"
+          id="image"
+          (change)="onFileChange($event)"
+          type="file"
+          name="resume"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label"> Image </span>
+        </span>
+        <span class="file-name">
+          {{ imageFile?.name | filename }}
+        </span>
+      </label>
+      <button (click)="removeImage()" class="button is-danger is-light ml-2">Remove Image</button>
+    </div>
+    <div class="tooltip">
+      <h1 class="is-size-5 color-darkblue my-2">Category Name</h1>
+      <span *ngIf="validate('name')" class="tag is-warning tooltip tooltiptext">Este campo es obligatorio</span>
+    </div>
+    <input
+      formControlName="name"
+      class="input is-rounded input-fields"
+      type="text"
+      placeholder="Category Name"
+    />
+    <div class="columns is-align-items-flex-end">
+      <div class="column is-6">
+        <h1 class="is-size-5 color-darkblue my-2">Status</h1>
+        <div class="select is-rounded">
+          <select formControlName="status" class="input-fields">
+            <option value="ACTIVE">Active</option>
+            <option value="INACTIVE">Inactive</option>
+          </select>
+        </div>
+        <button
+          *ngIf="isClean == false"
+          (click)="updateCategory()"
+          [disabled]="category.valid == false"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Edit category
+        </button>
+        <button
+          *ngIf="isClean"
+          [disabled]="category.valid == false"
+          (click)="createCategory()"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Create category
+        </button>
+      </div>
+      <div class="column is-6">
+        <button
+          [disabled]="idCategory == null"
+          (click)="deleteCategory()"
+          class="button is-rounded background-color-darkblue has-text-white is-size-5 m-3"
+        >
+          Delete 
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
